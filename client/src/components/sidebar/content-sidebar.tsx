@@ -1,6 +1,7 @@
 import { adminNavMenuItems } from "@/components/sidebar/menu-items"
 import { SidebarContent, SidebarGroup, SidebarGroupContent, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar"
-import { LucideIcon } from "lucide-react"
+import { ChevronDown, LucideIcon } from "lucide-react"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../ui/collapsible"
 
 type MenuItem = {
   title: string,
@@ -11,28 +12,38 @@ type MenuItem = {
 
 const ContentSidebar = () => {
   return (
-    <SidebarContent>
+    <SidebarContent className="gap-1">
 
       {adminNavMenuItems.map((group) => (
-        <SidebarGroup key={group.title}>
-          <SidebarGroupLabel>{group.title}</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
+        <Collapsible defaultOpen className="group/collapsible" key={group.title}>
+          <SidebarGroup >
+            <SidebarGroupLabel asChild>
+              <CollapsibleTrigger>
+                {group.title}
+                <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
+              </CollapsibleTrigger>
+            </SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
 
-              {group.items.map((item: MenuItem) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild isActive={item.isActive}>
-                    <a href={item.url}>
-                      {item.icon && <item.icon />}
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+                <CollapsibleContent className="overflow-hidden data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
 
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+                  {group.items.map((item: MenuItem) => (
+                    <SidebarMenuItem key={item.title}>
+                      <SidebarMenuButton asChild isActive={item.isActive}>
+                        <a href={item.url}>
+                          {item.icon && <item.icon />}
+                          <span>{item.title}</span>
+                        </a>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  ))}
+                </CollapsibleContent>
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        </Collapsible>
+
       ))}
 
     </SidebarContent>

@@ -1,4 +1,4 @@
-import { Calendar, Home, Inbox, Search, Settings, UserCog, UserPen, UserPlus, Users, UserSearch, UserX } from "lucide-react"
+import { Calculator, Calendar, ChartColumn, FlaskConical, Home, Inbox, Package, Search, Settings, UserCog, UserPen, UserPlus, Users, UserSearch, UserX } from "lucide-react"
 
 
 
@@ -65,6 +65,27 @@ const userItems = [
 ]
 
 
+const adminNavigation = [
+  {
+    title: "Raw Materials",
+    url: "#",
+    icon: Package
+  },
+  {
+    title: "Product Creator",
+    url: "#",
+    icon: FlaskConical
+  }, {
+    title: "Production Calculator",
+    url: "#",
+    icon: Calculator
+  }, {
+    title: "Dashboard",
+    url: "/dashboard",
+    icon: ChartColumn
+  },
+]
+
 export const userNavMenuItems = [
   {
     title: "Bassic Settings",
@@ -74,6 +95,10 @@ export const userNavMenuItems = [
 
 export const adminNavMenuItems = [
   ...userNavMenuItems,
+  {
+    title: "Admin Actions",
+    items: adminNavigation
+  },
   {
     title: "Users Settings",
     items: userItems,
