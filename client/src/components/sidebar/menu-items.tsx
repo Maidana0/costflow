@@ -1,71 +1,17 @@
-import { Calculator, Calendar, ChartColumn, FlaskConical, Home, Inbox, Package, Search, Settings, UserCog, UserPen, UserPlus, Users, UserSearch, UserX } from "lucide-react"
+import { Calculator, ChartColumn, FlaskConical, Home, Package, Settings, Users } from "lucide-react"
 
 
-
-const bassicsItems = [
+const itemsNavigation = [
   {
     title: "Home",
     url: "#",
     icon: Home,
   },
   {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
+    title: "Dashboard",
+    url: "/dashboard",
+    icon: ChartColumn
   },
-  {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar,
-  },
-  {
-    title: "Search",
-    url: "#",
-    icon: Search,
-  },
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
-  },
-]
-
-
-const userItems = [
-  {
-    title: "View Users",
-    url: "#",
-    icon: Users
-  },
-  {
-    title: "Search User",
-    url: "#",
-    icon: UserSearch
-  },
-  {
-    title: "Add User",
-    url: "#",
-    icon: UserPlus,
-  },
-  {
-    title: "Edit User",
-    url: "#",
-    icon: UserPen,
-  },
-  {
-    title: "Delete User",
-    url: "#",
-    icon: UserX,
-  },
-  {
-    title: "Design Roles",
-    url: "#",
-    icon: UserCog,
-  },
-]
-
-
-const adminNavigation = [
   {
     title: "Raw Materials",
     url: "#",
@@ -79,29 +25,24 @@ const adminNavigation = [
     title: "Production Calculator",
     url: "#",
     icon: Calculator
-  }, {
-    title: "Dashboard",
-    url: "/dashboard",
-    icon: ChartColumn
+  },
+  {
+    title: "Settings",
+    url: "#",
+    icon: Settings,
   },
 ]
 
-export const userNavMenuItems = [
-  {
-    title: "Bassic Settings",
-    items: bassicsItems
-  },
-]
+const menuItems = {
+  navigation: itemsNavigation,
+  admin: [
+    {
+      title: "Users",
+      url: "#",
+      icon: Users,
+    }
+  ],
+}
 
-export const adminNavMenuItems = [
-  ...userNavMenuItems,
-  {
-    title: "Admin Actions",
-    items: adminNavigation
-  },
-  {
-    title: "Users Settings",
-    items: userItems,
-  },
-]
 
+export default menuItems;
